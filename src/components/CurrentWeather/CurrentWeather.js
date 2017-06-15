@@ -2,25 +2,26 @@ import React, { PropTypes } from "react";
 
 import "./CurrentWeather.css";
 
+// destructured props
 export default function CurrentWeather( { weather, reset } ) {
 	return (
 		<div className="current-weather">
 			<div className="current-weather__weather">
-				<h3 className="current-weather__location">Provo</h3>
+				<h3 className="current-weather__location">{ weather.location }</h3>
 				<img
 					alt="sunny"
 					className="current-weather__icon"
-					src={ "" }
+					src={ weather.icon }
 				/>
-				<h3 className="current-weather__temp">44°</h3>
+				<h3 className="current-weather__temp">{ `${weather.currentTemperature}°F`}</h3>
 
 				<div className="current-weather__separator" />
 
 				<ul className="current-weather__stats">
-					<li className="current-weather__stat">Max: 68°</li>
-					<li className="current-weather__stat">Min: 34°</li>
-					<li className="current-weather__stat">Wind: 4,38 MPH</li>
-					<li className="current-weather__stat">Humidity: 62%</li>
+					<li className="current-weather__stat">{ `Max: ${weather.maxTemperature}°F`}</li>
+					<li className="current-weather__stat">{ `Min: ${weather.minTemperature}°F`}</li>
+					<li className="current-weather__stat">{ `Wind: ${weather.wind}`}</li>
+					<li className="current-weather__stat">{ `Humidity: ${weather.humidity}%`}</li>
 				</ul>
 			</div>
 			<button

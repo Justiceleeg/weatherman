@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import "./EnterLocation.css";
+import { setWeather } from './../../ducks/weather';
 
 class EnterLocation extends Component {
   constructor( props ) {
@@ -19,6 +20,8 @@ class EnterLocation extends Component {
 
   handleSubmit( event ) {
     event.preventDefault();
+
+    this.props.setWeather(this.state.location)
 
     this.setState( { location: "" } );
   }
@@ -46,4 +49,4 @@ class EnterLocation extends Component {
   }
 }
 
-export default connect( state => state, {})( EnterLocation );
+export default connect( state => state || {search: true}, {setWeather})( EnterLocation );
